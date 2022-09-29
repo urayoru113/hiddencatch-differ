@@ -1,4 +1,5 @@
 # bnb-hiddencatch-differ
+爆爆王找碴比較器，可以用來輕鬆破100關，或者偷偷電路人...
 
 ## Install
 **Use CMD**
