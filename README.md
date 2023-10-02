@@ -1,5 +1,6 @@
-# bnb-hiddencatch-differ
-爆爆王找碴比較器，可以用來輕鬆破100關，或者偷偷電路人...
+# hiddencatch-differ
+找碴比較器，可以抓取程序名稱，調整位置遊玩找碴...
+這裡以爆爆王為例子
 
 ## Install
 **Use CMD**
@@ -12,7 +13,7 @@
 
 **想直接下載的話**
 <br/>
-[download](https://github.com/urayoru113/bnb-hiddencatch-differ/releases/download/untagged-5d39085d57b6927e3f5b/differ.7z)
+[download](https://github.com/urayoru113/bnb-hiddencatch-differ/releases)
 
 ## explain
 

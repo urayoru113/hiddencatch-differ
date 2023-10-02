@@ -1,11 +1,11 @@
 from configparser import ConfigParser
-from PIL import Image
 
 import cv2
 import numpy as np
-import win32ui
-import win32gui
 import win32con
+import win32gui
+import win32ui
+from PIL import Image
 
 
 def screenshot(class_name):
@@ -24,9 +24,9 @@ def screenshot(class_name):
     cdc.SelectObject(bmp)
     cdc.BitBlt((0, 0), (w, h), mfcDC, (0, 0), win32con.SRCCOPY)
 
-    bmpinfo = bmp.GetInfo()
+    bmp.GetInfo()
     bmpstr = bmp.GetBitmapBits(True)
-    im = Image.frombytes('RGBA', (w, h), bmpstr)
+    im = Image.frombytes("RGBA", (w, h), bmpstr)
     im = np.array(im)
     cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
 
@@ -36,10 +36,11 @@ def screenshot(class_name):
     win32gui.ReleaseDC(hwnd, hwndDC)
     return im
 
-CLASS_NAME = 'Crazy Arcade'
-CONFIG_FILE = 'setting.ini'
 
-if __name__ == '__main__':
+CLASS_NAME = "Crazy Arcade"
+CONFIG_FILE = "setting.ini"
+
+if __name__ == "__main__":
     print("Please adjust file: setting.ini")
 
     config = ConfigParser()
@@ -47,17 +48,17 @@ if __name__ == '__main__':
     while True:
         config.read(CONFIG_FILE)
 
-        position = config['POSITION']
-        panel = config['PANEL']
-        x1 = int(position['x1'])
-        x2 = int(position['x2'])
-        y = int(position['y'])
-        w = int(panel['w'])
-        h = int(panel['h'])
+        position = config["POSITION"]
+        panel = config["PANEL"]
+        x1 = int(position["x1"])
+        x2 = int(position["x2"])
+        y = int(position["y"])
+        w = int(panel["w"])
+        h = int(panel["h"])
 
-        img = screenshot(CLASS_NAME)
-        img1 = img[y:y+h, x1:x1+w]
-        img2 = img[y:y+h, x2:x2+w]
+        img = screenshot(config["PROCESS"]["name"])
+        img1 = img[y: y + h, x1: x1 + w]
+        img2 = img[y: y + h, x2: x2 + w]
         diff = cv2.absdiff(img1, img2)
 
         cv2.rectangle(img, (x1, y), (x1 + w, y + h), (0, 0, 255), 1)
